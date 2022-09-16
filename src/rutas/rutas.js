@@ -1,5 +1,5 @@
 const routes = require('express').Router();
-
+const url='/home';
 const { 
     getHOME,
     postHOME,
@@ -8,9 +8,9 @@ const {
 } = require('../controladores/controladores-home');
 
 
-routes.get('/home',getHOME);
-routes.post('/home',postHOME);
-routes.put('/home',putHOME);
-routes.delete('/home',deleteHOME);
+routes.get(url,getHOME);
+routes.post(url,postHOME);
+routes.put(url,putHOME);
+routes.delete(url,deleteHOME);
 
 module.exports=routes;
