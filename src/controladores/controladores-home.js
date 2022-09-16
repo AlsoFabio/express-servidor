@@ -1,24 +1,24 @@
-const ctrl={};
+const ctrlHOME={};
 
-ctrl.ctrlGET=(req,res)=>{
+ctrlHOME.getHOME=(req,res)=>{
     res.json({
         msg:'petición GET'
     });
 }
-ctrl.ctrlPOST=(req,res)=>{
+ctrlHOME.postHOME=(req,res)=>{
     res.json({
         msg:'petición POST'
     });
 }
-ctrl.ctrlPUT=(req,res)=>{
+ctrlHOME.putHOME=(req,res)=>{
     res.json({
         msg:'petición PUT'
     });
 }
-ctrl.ctrlDELETE=(req,res)=>{
+ctrlHOME.deleteHOME=(req,res)=>{
     res.json({
         msg:'petición DELETE'
     });
 }
 
-module.exports=ctrl;
+module.exports=ctrlHOME;
