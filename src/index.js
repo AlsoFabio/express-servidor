@@ -11,7 +11,7 @@ mongo
   .catch((error) => console.log(error));
 
 app.use(express.json());
-app.use(require("./rutas/rutas"));
+app.use(require("./rutas/rutas-home"));
 app.use(require('./rutas/user-rutas'));
 
 app.listen(port, () => console.log(`Conectado al puerto http://localhost:${port}`));

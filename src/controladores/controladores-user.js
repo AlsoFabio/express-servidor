@@ -42,7 +42,7 @@ ctrlUser.putUSER = (req, res) => {
 ctrlUser.deleteUSER = (req, res) => {
   const { id } = req.params;
   userSchema
-    .deleteOne({_id:id})
+    .deleteOne({ _id: id })
     .then((datos) => res.json(datos))
     .catch((error) => res.json({ message: error }));
 };
