@@ -2,7 +2,7 @@ const userSchema = require("../models/user-model");
 
 const ctrlUser = {};
 
-// generar un uuario
+// generar un usuario
 ctrlUser.postUSER = (req, res) => {
   const user = userSchema(req.body);
   user
