@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 
 mongo
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("CONECTADO A MONGO ATLRAS"))
+  .then(() => console.log("CONECTADO AL MONGOLO ATLAS"))
   .catch((error) => console.log(error));
 
 app.use(express.json());
