@@ -6,7 +6,7 @@ const ctrlTask = {};
 ctrlTask.getTasks = async (req, res) => {
   const tarea = await taskSchema.find();
   try {
-    return res.json(tarea);
+    return res.render('index',{tarea});
   } catch (error) {
     return res.json((error.message = "mal"));
   }
