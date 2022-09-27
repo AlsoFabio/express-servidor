@@ -21,7 +21,7 @@ mongo
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));

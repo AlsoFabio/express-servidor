@@ -1,21 +1,79 @@
 <%- include('partials/header.ejs')%>
-<body>
+
+
+ <!-- -------------------modal nueva tarea-------------------- -->
+<button type="button" class="btn btn-primary col-12 my-3" data-bs-toggle="modal" data-bs-target="#quesito">Nueva Tarea</button>
+<div class="modal fade" id="quesito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="mb-3">
+            <label for="newTareaId" class="form-label">Nombre de la Tarea</label>
+            <input type="text" class="form-control" id="newTareaId">
+          </div>
+          <div class="mb-3">
+            <label for="newDescriptionId" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="newDescriptionId">
+          </div>
+          <input id="contador" value="<%= tarea.length+1 %>" hidden="true">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="nuevaTarea()">Nueva Tarea</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% tarea.forEach((task)=> { %>
   <div class="container">
     <div class="row m-2">
-      <% tarea.forEach((task)=> { %>
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
         <div class="card">
-          <img src="/img/gatito.jpg" class="card-img-top" alt="..." />
+          <img src="/img/<%= (task.id>=100)?'gatito':'perrito' %>.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title"><%= task.taskname %></h5>
             <p class="card-text"><%= task.description %></p>
-            <button type="submit" class="btn btn-warning">Editar</button>
-            <button type="submit" class="btn btn-md btn-danger" value="<%= task.id %>" onclick="eliminarTarea(event)">borrar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#asdccdcesgsaf">editar</button>
+            <button type="submit" class="btn btn-md btn-danger" value="<%= task.id %>" onclick="eliminarTarea('<%= task.id %>')">borrar</button>
           </div>
         </div>
+          
+          <!-- --------------modal editar--------------------- -->
+          
+          <div class="modal fade" id="asdccdcesgsaf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <div class="mb-3">
+                    <label for="tareaId" class="form-label">Nombre de la Tarea</label>
+                    <input type="text" class="form-control" id="tareaId" value="<%= task.id %>">
+                  </div>
+                  <div class="mb-3">
+                    <label for="descripcionId" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="descripcionId" value="<%= task.description %>">
+                  </div>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="editarTarea('<%= task.id %>')">Guardar Cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
-      <% }); %>
     </div>
   </div>
-</body>
+
+  
+
+  
+  <% }); %>
 <%- include('partials/footer.ejs') %>

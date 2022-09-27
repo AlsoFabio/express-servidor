@@ -12,15 +12,14 @@ const taskSchema = new Schema(
     },
     status: {
       type: Boolean,
-      required: true,
       default: true,
     },
     id: {
       type: Number,
       unique: true,
       required: true,
+    }
     },
-  },
   {
     timestamps: true,
     versionKey: false,

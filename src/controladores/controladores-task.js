@@ -17,7 +17,7 @@ ctrlTask.getTask = async (req, res) => {
   const id = req.params.id;
   const tarea = await taskSchema.find({ id });
   try {
-    return res.json(tarea);
+    return res.render('index',{tarea});
   } catch (error) {
     return res.json((error.message = "mal"));
   }
@@ -43,12 +43,12 @@ ctrlTask.postTask = async (req, res) => {
 ctrlTask.putTask = async (req, res) => {
   const id = req.params.id;
   const { taskname, description } = req.body;
+  try {
   const tarea = await taskSchema.findOneAndUpdate(
-    { id },
+    id,
     { taskname, description }
   );
-  try {
-    return res.json(tarea);
+    return res.render('index',{tarea});
   } catch (error) {
     return res.json((error.message = "mal"));
   }
