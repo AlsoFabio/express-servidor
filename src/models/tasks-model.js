@@ -14,11 +14,6 @@ const taskSchema = new Schema(
       type: Boolean,
       default: true,
     },
-    id: {
-      type: Number,
-      unique: true,
-      required: true,
-    }
     },
   {
     timestamps: true,

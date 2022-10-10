@@ -1,15 +1,3 @@
-// const eliminarTarea = async (idTarea) => {
-  //     console.log(idTarea)
-  //     try {
-    //         await fetch(`http://localhost:4000/tasks/${idTarea}`, {method: 'DELETE'})
-    //         console.log("ok")
-    //     } catch (error) {
-      //         console.log(error.message)
-      //     }
-      // }
-      
-
-
 const eliminarTarea = async (idTarea) => {
   console.log(idTarea);
   try {
@@ -24,12 +12,13 @@ const eliminarTarea = async (idTarea) => {
 };
 
 const editarTarea = async (idTarea) => {
-  const nombreTarea = document.getElementById("tareaId");
-  const descripcionTarea = document.getElementById("descripcionId");
+  const nombreTarea = document.getElementById(`tarea${idTarea}`);
+  const descripcionTarea = document.getElementById(`descripcion${idTarea}`);
   const objTarea = {
     taskname: nombreTarea.value,
     description: descripcionTarea.value,
   };
+  console.log(objTarea)
   try {
     await fetch(`http://localhost:4000/tareas/${idTarea}`, {
       method: "PUT",
@@ -46,11 +35,9 @@ const editarTarea = async (idTarea) => {
 const nuevaTarea = async () => {
   const nombreTarea = document.getElementById("newTareaId");
   const descripcionTarea = document.getElementById("newDescriptionId");
-  const contador = document.getElementById("contador");
   const objNewTarea = {
     taskname: nombreTarea.value,
     description: descripcionTarea.value,
-    id:contador.value,
   };
   console.log(objNewTarea)
   try {
@@ -65,4 +52,3 @@ const nuevaTarea = async () => {
     console.log(error);
   }
 };
-

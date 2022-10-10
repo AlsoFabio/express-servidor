@@ -19,7 +19,6 @@
             <label for="newDescriptionId" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="newDescriptionId">
           </div>
-          <input id="contador" value="<%= tarea.length+1 %>" hidden="true">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="nuevaTarea()">Nueva Tarea</button>
         </div>
@@ -33,18 +32,17 @@
     <div class="row m-2">
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3">
         <div class="card">
-          <img src="/img/<%= (task.id>=100)?'gatito':'perrito' %>.jpg" class="card-img-top" alt="..." />
           <div class="card-body">
             <h5 class="card-title"><%= task.taskname %></h5>
             <p class="card-text"><%= task.description %></p>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#asdccdcesgsaf">editar</button>
-            <button type="submit" class="btn btn-md btn-danger" value="<%= task.id %>" onclick="eliminarTarea('<%= task.id %>')">borrar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#los<%= task._id %>">editar</button>
+            <button type="submit" class="btn btn-md btn-danger" value="<%= task._id %>" onclick="eliminarTarea('<%= task._id %>')">borrar</button>
           </div>
         </div>
           
           <!-- --------------modal editar--------------------- -->
           
-          <div class="modal fade" id="asdccdcesgsaf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="los<%= task._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -54,14 +52,14 @@
                 <div>
                   <div class="mb-3">
                     <label for="tareaId" class="form-label">Nombre de la Tarea</label>
-                    <input type="text" class="form-control" id="tareaId" value="<%= task.id %>">
+                    <input type="text" class="form-control" id="tarea<%= task._id %>" value="<%= task.taskname %>">
                   </div>
                   <div class="mb-3">
                     <label for="descripcionId" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="descripcionId" value="<%= task.description %>">
+                    <input type="text" class="form-control" id="descripcion<%= task._id %>" value="<%= task.description %>">
                   </div>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" onclick="editarTarea('<%= task.id %>')">Guardar Cambios</button>
+                  <button type="button" class="btn btn-primary" onclick="editarTarea('<%= task._id %>')">Guardar Cambios</button>
                 </div>
               </div>
             </div>
